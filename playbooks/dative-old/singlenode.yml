@@ -1,0 +1,30 @@
+---
+- hosts: "dative-old-local"
+
+  pre_tasks:
+
+    - include_vars: "vars-singlenode.yml"
+      tags:
+        - "always"
+
+  roles:
+
+    - role: "percona"
+      become: "yes"
+      tags:
+        - "percona"
+
+#    - role: "nginx"
+#      become: "yes"
+#      tags:
+#        - "nginx"
+
+#    - role: "old-src"
+#      become: "yes"
+#      tags:
+#        - "old-src"
+
+#    - role: "dative-src"
+#      become: "yes"
+#      tags:
+#        - "dative-src"
