@@ -38,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :ansible do |ansible|
     ansible.playbook = "./singlenode.yml"
     ansible.host_key_checking = false
+    #ansible.verbose = "vvv"
     ansible.extra_vars = {
       "dative_old_src_dir" => "/vagrant/src",
       "dative_old_src_environment_type" => "development",

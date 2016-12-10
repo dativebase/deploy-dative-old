@@ -3,3 +3,12 @@
 old_src_version: "master"
 dative_src_version: "master"
 mysql_root_password: "Y0xbH450qZ4NuyPl"
+
+old_instances:
+  - old_inst_name: "testold"
+    old_inst_port: "5000"
+    reset_db: "yes"
+  - old_inst_name: "testold2"
+    old_inst_port: "5001"
+    reset_db: "yes"
+

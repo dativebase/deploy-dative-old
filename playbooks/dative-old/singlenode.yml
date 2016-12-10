@@ -14,15 +14,15 @@
       tags:
         - "percona"
 
-#    - role: "nginx"
-#      become: "yes"
-#      tags:
-#        - "nginx"
+    - role: "old-src"
+      become: "yes"
+      tags:
+        - "old-src"
 
-#    - role: "old-src"
-#      become: "yes"
-#      tags:
-#        - "old-src"
+    - role: "nginx"
+      become: "yes"
+      tags:
+        - "nginx"
 
 #    - role: "dative-src"
 #      become: "yes"
