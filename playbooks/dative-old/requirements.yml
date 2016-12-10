@@ -12,8 +12,8 @@
   version: "master"
   name: "old-src"
 
-#- src: "https://github.com/jrwdunham/ansible-dative-src"
-#  version: "master"
-#  name: "dative-src"
+- src: "https://github.com/jrwdunham/ansible-dative-src"
+  version: "master"
+  name: "dative-src"
 
   

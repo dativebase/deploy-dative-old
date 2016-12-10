@@ -7,6 +7,31 @@
       tags:
         - "always"
 
+    - name: "Install ack-grep"
+      apt:
+        pkg: "ack-grep"
+        state: "latest"
+      become: "yes"
+
+    - name: "Symlink ack-grep to ack"
+    - file:
+        state: "link"
+        src: "/usr/bin/ack-grep"
+        dest: "/usr/bin/ack"
+
+    - name: "Install Joel's dotfiles (vim stuff)"
+      git:
+        repo: "https://github.com/jrwdunham/dotfiles.git"
+        dest: "/home/vagrant/downloads"
+        version: "master"
+        force: "yes"
+        accept_hostkey: "yes"
+
+    - name: "Install Joel's dotfiles"
+      shell: "./install.sh"
+      args:
+        chdir: "/home/vagrant/downloads/dotfiles"
+
   roles:
 
     - role: "percona"
@@ -19,12 +44,12 @@
       tags:
         - "old-src"
 
+    - role: "dative-src"
+      become: "yes"
+      tags:
+        - "dative-src"
+
     - role: "nginx"
       become: "yes"
       tags:
         - "nginx"
-
-#    - role: "dative-src"
-#      become: "yes"
-#      tags:
-#        - "dative-src"
