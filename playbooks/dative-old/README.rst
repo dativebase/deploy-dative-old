@@ -3,7 +3,8 @@
 ===============================================================================
 
 This Vagrant/Ansible provisioner installs, configures and serves Dative and the
-OLD on a local vagrant virtual machine.
+OLD on a local vagrant virtual machine. It can be used to configure and serve
+multiple OLD instances on a single server.
 
 
 Requirements
@@ -35,9 +36,14 @@ Usage
 
     $ vagrant provision
 
+5. To re-provision by only running tasks with specific tags, e.g., the ``dative``
+   tag, run::
+
+    $ env ANSIBLE_ARGS="--tags=dative" vagrant provision
+
 
 Configuration
 ===============================================================================
 
-Tweak vars in vars-singlenode.yml. In particular, modify `old_instances` to
+Tweak vars in vars-singlenode.yml. In particular, modify ``old_instances`` to
 control the OLD instances that are created.
