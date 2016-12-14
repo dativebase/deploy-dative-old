@@ -9,13 +9,15 @@
 
     # Developer conveniences: ack and Joel's dotfiles (make vim and bash work
     # right, i.e., like vim)
-    - name: "Install ack and git"
+    - name: "Install ack, git, fish, and jq"
       apt:
         pkg: "{{ item }}"
         state: "latest"
       with_items:
         - "ack-grep"
         - "git"
+        - "fish"
+        - "jq"
       become: "yes"
       tags: "devconv"
 
