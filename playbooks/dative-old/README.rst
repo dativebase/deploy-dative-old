@@ -11,7 +11,9 @@ Requirements
 ===============================================================================
 
 - Vagrant 1.7 or newer
-- Ansible 2.0 or newer
+- Ansible 2.1.1.0. On Ubuntu::
+
+    sudo apt-get install ansible=2.1.1.0-1~ubuntu16.04.1
 
 
 Usage
