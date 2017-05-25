@@ -1,0 +1,28 @@
+---
+
+old_src_version: "dev/learn-gocd"
+mysql_root_password: "Y0xbH450qZ4NuyPl"
+
+# Putting the OLD source in a Vagrant synced directory allows the
+# developer to modify the code on their host machine.
+old_src_dir: "{{ dative_old_src_dir }}/old"
+
+# Define any number of OLD instances as hashes; name should match [a-zA-Z0-9_];
+# distinct ports required; reset_db truthy if you want db cleared.
+old_instances:
+  - old_inst_name: "testold"
+    old_inst_port: "5000"
+    reset_db: "yes"
+
+# Foma is for FST compilation.
+old_src_install_foma: "yes"
+
+# MITLM is for LM estimation.
+old_src_install_mitlm: "yes"
+
+# TGrep2 is for syntactic tree search.
+old_src_install_tgrep2: "yes"
+
+# FFmpeg is used to create reduced-size audio files.
+old_src_install_ffmpeg: "yes"
+

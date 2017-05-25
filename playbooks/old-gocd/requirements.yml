@@ -1,0 +1,15 @@
+---
+
+- src: "https://github.com/jrwdunham/ansible-percona"
+  version: "master"
+  name: "percona"
+
+- src: "https://github.com/jrwdunham/ansible-nginx"
+  version: "master"
+  name: "nginx"
+
+- src: "https://github.com/jrwdunham/ansible-old-src"
+  version: "master"
+  name: "old-src"
+
+  
