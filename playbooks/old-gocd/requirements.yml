@@ -9,7 +9,7 @@
   name: "nginx"
 
 - src: "https://github.com/jrwdunham/ansible-old-src"
-  version: "master"
+  version: "dev/gocd"
   name: "old-src"
 
   
