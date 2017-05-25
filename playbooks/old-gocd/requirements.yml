@@ -4,7 +4,7 @@
   version: "master"
   name: "percona"
 
-- src: "https://github.com/jrwdunham/ansible-nginx"
+- src: "https://github.com/dativebase/ansible-old-nginx"
   version: "master"
   name: "nginx"
 
