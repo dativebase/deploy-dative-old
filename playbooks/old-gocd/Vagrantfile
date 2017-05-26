@@ -4,6 +4,11 @@
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+required_plugins = %w(vagrant-triggers)
+    required_plugins.each do |plugin|
+    exec "vagrant plugin install #{plugin};vagrant #{ARGV.join(" ")}" unless Vagrant.has_plugin? plugin || ARGV[0] == 'plugin'
+end
+
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box = ENV.fetch("VAGRANT_BOX", "ubuntu/trusty64")
@@ -26,6 +31,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provider :virtualbox do |vb|
       vb.customize ["modifyvm", :id, "--memory", properties.fetch("memory")]
       vb.customize ["modifyvm", :id, "--cpus", properties.fetch("cpus")]
+    end
+
+    # Stop supervisord tasks before halt
+    config.trigger.before :halt do
+        info "Stopping supervisord tasks..."
+        run_remote "sudo supervisorctl stop all"
+    end
+
+    # Start supervisord tasks after up
+    config.trigger.after :up do
+        info "Starting supervisord tasks..."
+        run_remote "sudo supervisorctl start all"
     end
 
   end
