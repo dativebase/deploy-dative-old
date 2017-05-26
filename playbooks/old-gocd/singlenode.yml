@@ -60,17 +60,17 @@
 
   roles:
 
-    - role: "percona"
+    - role: "dativebase.percona"
       become: "yes"
       tags:
         - "percona"
 
-    - role: "old-src"
+    - role: "dativebase.old-src"
       become: "yes"
       tags:
         - "old-src"
 
-    - role: "nginx"
+    - role: "dativebase.nginx"
       become: "yes"
       tags:
         - "nginx"

@@ -2,14 +2,14 @@
 
 - src: "https://github.com/jrwdunham/ansible-percona"
   version: "master"
-  name: "percona"
+  name: "dativebase.percona"
 
 - src: "https://github.com/dativebase/ansible-old-nginx"
   version: "27ca1f5f37c8d2ac61587201df822f7e6438b440"
-  name: "nginx"
+  name: "dativebase.nginx"
 
 - src: "https://github.com/jrwdunham/ansible-old-src"
   version: "dev/gocd"
-  name: "old-src"
+  name: "dativebase.old-src"
 
   
