@@ -1,0 +1,8 @@
+---
+
+dative_src_version: "dev/gocd"
+mysql_root_password: "Y0xbH450qZ4NuyPl"
+
+# Putting the Dative source in a Vagrant synced directory allows the
+# developer to modify the code on their host machine.
+dative_src_dir: "{{ dative_old_src_dir }}/dative"

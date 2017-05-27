@@ -1,0 +1,11 @@
+---
+
+- src: "https://github.com/dativebase/ansible-dative-nginx"
+  version: "master"
+  name: "dativebase.nginx"
+
+- src: "https://github.com/dativebase/ansible-dative-src"
+  version: "master"
+  name: "dativebase.dative-src"
+
+  
