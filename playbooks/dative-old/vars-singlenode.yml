@@ -4,8 +4,13 @@ old_src_version: "master"
 dative_src_version: "master"
 mysql_root_password: "Y0xbH450qZ4NuyPl"
 
-# Putting the Dative and OLD source in a Vagrant synced directory allows the
-# developer to modify the code on their host machine.
+# On the VM, the OLD and Dative source is in `dative_old_src_dir` (by default
+# /vagrant/src/) under the subdirectories old/ and dative/, respectively. On
+# the host machine, these directories are synced to
+# deploy-dative-old/playbooks/dative-old/old/ and
+# deploy-dative-old/playbooks/dative-old/dative/. Putting the Dative and OLD
+# source in a Vagrant synced directory allows the developer to modify the code
+# on their host machine.
 old_src_dir: "{{ dative_old_src_dir }}/old"
 dative_src_dir: "{{ dative_old_src_dir }}/dative"
 
