@@ -1,0 +1,4 @@
+.vagrant/
+roles/
+src/
+singlenode.retry

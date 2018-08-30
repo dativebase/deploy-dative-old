@@ -1,0 +1,76 @@
+---
+- hosts: "dative-old-local-rhel7"
+
+  pre_tasks:
+
+    - include_vars: "vars-singlenode.yml"
+      tags:
+        - "always"
+
+    # Developer conveniences: ack and Joel's dotfiles (make vim and bash work
+    # right, i.e., like vim)
+    - name: "Install ack, git, fish, and jq"
+      apt:
+        pkg: "{{ item }}"
+        state: "latest"
+      with_items:
+        - "ack-grep"
+        - "git"
+        - "fish"
+        - "jq"
+      become: "yes"
+      tags: "devconv"
+
+    - name: "Symlink ack-grep to ack"
+      file:
+        state: "link"
+        src: "/usr/bin/ack-grep"
+        dest: "/usr/bin/ack"
+      become: "yes"
+      tags: "devconv"
+
+    - name: "Create ~/downloads/"
+      file:
+        path: "/home/vagrant/downloads/"
+        state: "directory"
+        mode: "0755"
+        owner: "vagrant"
+        group: "vagrant"
+      tags: "devconv"
+
+    - name: "Install Joel's dotfiles (vim stuff)"
+      git:
+        repo: "https://github.com/jrwdunham/dotfiles.git"
+        dest: "/home/vagrant/downloads/dotfiles"
+        version: "master"
+        force: "yes"
+        accept_hostkey: "yes"
+      tags: "devconv"
+
+    - name: "Install Joel's dotfiles"
+      shell: "./install.sh"
+      args:
+        chdir: "/home/vagrant/downloads/dotfiles"
+      tags: "devconv"
+
+  roles:
+
+    - role: "percona"
+      become: "yes"
+      tags:
+        - "percona"
+
+    - role: "old-src"
+      become: "yes"
+      tags:
+        - "old-src"
+
+    - role: "dative-src"
+      become: "yes"
+      tags:
+        - "dative-src"
+
+    - role: "nginx"
+      become: "yes"
+      tags:
+        - "nginx"

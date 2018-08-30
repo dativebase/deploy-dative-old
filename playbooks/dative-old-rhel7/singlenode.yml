@@ -1,0 +1,63 @@
+---
+- hosts: "dative-old-local-centos7"
+
+  pre_tasks:
+
+    - include_vars: "vars-singlenode.yml"
+      tags:
+        - "always"
+
+    - name: "Enable EPEL repository"
+      yum:
+         name: "epel-release"
+         state: "latest"
+      become: "yes"
+
+    # Developer conveniences: ack and Joel's dotfiles (make vim and bash work
+    # right, i.e., like vim)
+    - name: "Install ack, git, and jq"
+      yum:
+        name: "{{ item }}"
+        state: "latest"
+      with_items:
+        - "ack"
+        - "git"
+        - "jq"
+      become: "yes"
+      tags: "devconv"
+
+    - name: "Create ~/downloads/"
+      file:
+        path: "/home/vagrant/downloads/"
+        state: "directory"
+        mode: "0755"
+        owner: "vagrant"
+        group: "vagrant"
+      tags: "devconv"
+
+    - name: "Install Joel's dotfiles (vim stuff)"
+      git:
+        repo: "https://github.com/jrwdunham/dotfiles.git"
+        dest: "/home/vagrant/downloads/dotfiles"
+        version: "master"
+        force: "yes"
+        accept_hostkey: "yes"
+      tags: "devconv"
+
+    - name: "Install Joel's dotfiles"
+      shell: "./install.sh"
+      args:
+        chdir: "/home/vagrant/downloads/dotfiles"
+      tags: "devconv"
+
+  roles:
+
+    - role: "percona"
+      become: "yes"
+      tags:
+        - "percona"
+
+    - role: "old-src"
+      become: "yes"
+      tags:
+        - "old-src"

@@ -1,0 +1,20 @@
+---
+
+- src: "https://github.com/jrwdunham/ansible-percona"
+  #version: "master"
+  version: "dev/issue-23-support-centos"
+  name: "percona"
+
+- src: "https://github.com/jrwdunham/ansible-nginx"
+  version: "master"
+  name: "nginx"
+
+- src: "https://github.com/dativebase/ansible-old-src"
+  version: "master"
+  name: "old-src"
+
+- src: "https://github.com/dativebase/ansible-dative-src"
+  version: "master"
+  name: "dative-src"
+
+  
